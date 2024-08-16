@@ -11,6 +11,9 @@
 - Manage account
 - Google OAuth
 
+## Project flow
+![SharpAuth flow](sharpauth-flow.png)
+
 ### Tools used
 - [TL Draw](https://www.tldraw.com/): For building a schema for SharpAuth
 
