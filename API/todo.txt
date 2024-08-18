@@ -1,9 +1,0 @@
-## Setar o banco de dados
-
-## Ver se tem mais algum componente que eu preciso estruturar no banco de dados
-
-## Ver como vai ser a função de token
-
-## Fazer a função de registrar
-
-## Fazer a função 
