@@ -15,7 +15,7 @@
 ![SharpAuth flow](sharpauth-flow.png)
 
 ### Tools used
-- [TL Draw](https://www.tldraw.com/): For building a schema for SharpAuth
+- [TL Draw:](https://www.tldraw.com/) For building a schema for SharpAuth
 
 ### Why should you star it?
 I'm not brand new to developing, but I need to have a reasonable portfolio, and I believe this is a good
