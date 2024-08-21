@@ -1,25 +1,24 @@
 using Microsoft.AspNetCore.Mvc;
 using API.Models;
-using API.Context;
-using System.Data.Entity;
+using API.Services;
 
 namespace API.Controllers
 {
     [ApiController]
+    [Route("User")]
     public class UserController : ControllerBase
     {
-        private readonly UserContext _userContext;
-
-        public UserController(UserContext userContext) {
-            _userContext = userContext; 
+        private readonly UserServices _userServices;
+        public UserController() {
+            _userServices = new UserServices(); 
         }
         
         [HttpPost("CreateUser")]
-        public async Task<IActionResult> CriarUsuario(User user) {
+        public async Task<IActionResult> CriarUsuario(User user) 
+        {
             try 
             {
-                _userContext.Users.Add(user);
-                await _userContext.SaveChangesAsync();
+                await _userServices.CriarUsuario(user);
                 return Ok(user);
             } 
             catch (Exception ex) 
@@ -29,19 +28,16 @@ namespace API.Controllers
         }
 
         [HttpGet("GetUserById/{id}")]
-        public async Task<IActionResult> ObterUsuario(int id) {
+        public async Task<IActionResult> ObterUsuario(int id) 
+        {
             try 
             {
-                var user = await _userContext.Users.FirstOrDefaultAsync(u => u.Id == id);
-                if (user == null) {
-                    throw new Exception("Usuario não consta no distema");
-                }
-
+                var user = await _userServices.ObterUsuario(id);
                 return Ok(user);
             } 
             catch (Exception ex) 
             {
-                return BadRequest(ex.Message);
+                return NotFound(ex.Message);
             }
         }
     }
