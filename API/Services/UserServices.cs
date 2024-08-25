@@ -114,12 +114,12 @@ namespace API.Services
             {
                 
                 user.Password = HashPassword(user.Password);
+                user.CreatedAt = DateTime.Now;
 
                 _userContext.Users.Add(user);
                 await _userContext.SaveChangesAsync();
             }
 
-            user.CreatedAt = DateTime.Now;
         }
 
         public async Task<User> ObterUsuario(int id) 
