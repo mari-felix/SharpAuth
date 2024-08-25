@@ -27,6 +27,21 @@ namespace API.Controllers
             }
         }
 
+        [HttpPost("LogInUser")]
+        public async Task<IActionResult> LogarUsuario(string email, string password)
+        {
+            try 
+            {
+                var user = await _userServices.LogarUsuario(email, password);
+                return Ok(user);  
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Não há usuário com esses dados: " + ex.Message);
+            }
+        }
+
+
         [HttpGet("GetUserById/{id}")]
         public async Task<IActionResult> ObterUsuario(int id) 
         {
